@@ -52,5 +52,5 @@ function render() {
 }
 
 function fadeIn() {
-  container.style.opacity = 1
+  setTimeout(function () { container.style.opacity = 1 }, 100)
 }
