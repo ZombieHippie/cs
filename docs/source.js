@@ -90,6 +90,6 @@ function fadeIn() {
     onWindowResize()
     setTimeout(function () {
       renderer.setPixelRatio(window.devicePixelRatio ? window.devicePixelRatio : 1)
-    }, 5000)
+    }, 3500)
   }, 100)
 }
