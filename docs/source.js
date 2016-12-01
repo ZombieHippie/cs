@@ -50,7 +50,7 @@ var cycle_at = 120;
 // Calculate this since multiplication is much faster than multiplication 
 var cycle_at_r = 1 / cycle_at;
 var cyclei = 0;
-var min_fps = 24;
+var min_fps = 16;
 var min_mspf = 1000 / min_fps;
 var is_adjusted = false;
 // Watching performance and adjusting DPR in response.
