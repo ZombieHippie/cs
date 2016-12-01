@@ -1,18 +1,75 @@
 <html style="background: whitesmoke;">
     <head>
+        <meta charset="UTF-8">
         <title>Covalent Social is a platform for finding friends in a new and modern way through completely free digital networking products.</title>
         <meta name="theme-color" content="#352769">
         <meta name="viewport" content="width=device-width">
         <link rel="shortcut icon" href="./favicon.png">
-        <meta name="google-site-verification" content="76X8qGRbL8CZ9BFWCO2u3O3kzAGiVGKrRJI8Z5o3T5M" />
+<script id="vertexShader" type="x-shader/x-vertex">
+varying vec2 vUv;
+
+void main() {
+    vUv = uv;
+
+    vec4 mvPosition = modelViewMatrix * vec4(position, 1.0 );
+    gl_Position = projectionMatrix * mvPosition;
+}
+</script>
+<script id="fragmentShader" type="x-shader/x-fragment">
+uniform vec2 iResolution;
+uniform float iGlobalTime;
+
+varying vec2 vUv; 
+
+float affect = -0.4;
+float ir = .20784313;
+float ig = .15294117;
+float ib = .41176471;
+
+void main(void) {
+    float time=iGlobalTime*0.6;
+    vec2 uv = (-1.0 + 2.0 *vUv)* 2.0;
+
+    vec2 uv0=uv;
+    float i0=1.4;
+    float i1=1.9;
+    float i2=1.4;
+    float i4=0.6;
+    for(int s=0;s<20;s++) {
+        vec2 r;
+        r=vec2(cos(uv.y*i0-i4+time/i1),sin(uv.x*i0-i4+time/i1))/i2;
+        r+=vec2(-r.y,r.x)*0.3;
+        uv.xy+=r-0.5;
+        i0*=1.93;
+        i1*=1.15;
+        i2*=1.7;
+        i4+=0.65+0.1*time*i1;
+    }
+    float r=sin(uv.x-time);
+    float b=sin(uv.y+time);
+    float g=0.8;
+
+    float k=r-b;
+
+    gl_FragColor = vec4(k,k,k,1.0);
+}
+</script>
+<style>.name { font-weight: bold; text-decoration: none; background: transparent; transition: .1s background ease-in; } .name:hover { background: #FFBF24 }</style>
     </head>
-    <body>
-        <div style="width: 320px; margin-right: -160px; margin-top: -75px; position: fixed; top: 38.2%; right: 50%; text-align: center;">
+    <body style="margin: 0; padding: 0; overflow: hidden; background: #020202;">
+        <div style="width: 320px; margin-right: -160px; margin-top: -75px; position: fixed; z-index: 1; top: 38.2%; right: 50%; text-align: center;">
             <picture style="width: 100%;">
                 <source srcset="./brand@1x.png 1x, ./brand@2x.png 2x">
                 <img src="./brand@2x.png" alt="Covalent Social brand image.">
             </picture>
-            <b style=" border-bottom: 2px solid #FFBF24; color: #352769;">covalent social</b>
+            <a style="border-bottom: 4px solid #FFBF24; color: #352769;" class="name" href="mailto:hello@covalent.social">covalent social</a>
         </div>
+        <div id="container" style="opacity: 0; transition: opacity 5s ease-out;"></div>
+        <script type="text/javascript" src="http://localhost:9999/devreload.js"></script>
+        <script type="text/javascript" src="http://threejs.org/build/three.min.js"></script>
+        <!--<script id="vertexShader" type="x-shader/x-vertex" src="./vertex-shader.gl"></script>-->
+        <!--<script id="fragmentShader" type="x-shader/x-fragment" src="./fragment-shader.gl"></script>-->
+        <!--<script type="text/javascript" src="./three.min.js"></script>-->
+        <script type="text/javascript" src="./source.js"></script>
     </body>
 </html>
