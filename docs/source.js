@@ -86,10 +86,13 @@ function render(t) {
 
 function fadeIn() {
   setTimeout(function () {
-    container.style.opacity = 1;
+    var overlay1 = document.getElementById('overlay-1')
+    var overlay2 = document.getElementById('overlay-2')
+    overlay1.style.opacity = 0;
+    overlay2.style.opacity = 0;
     onWindowResize()
     setTimeout(function () {
       renderer.setPixelRatio(window.devicePixelRatio ? window.devicePixelRatio : 1)
-    }, 3500)
+    }, 2500)
   }, 100)
 }
