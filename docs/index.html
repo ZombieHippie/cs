@@ -1,11 +1,12 @@
 <html style="background: whitesmoke;">
     <head>
         <meta charset="UTF-8">
-        <title>Covalent Social is a platform for finding friends in a new and modern way through completely free digital networking products.</title>
+        <title>Covalent is a team looking at new ways of finding friends in new and modern ways through completely free digital networking products.</title>
         <meta name="theme-color" content="#352769">
         <meta name="viewport" content="width=device-width">
         <link rel="shortcut icon" href="./favicon.png">
-        <script id="vertexShader" type="x-shader/x-vertex">
+<!-- THREE.js code adopted from https://codepen.io/enolic/pen/mAKbpm -->
+<script id="vertexShader" type="x-shader/x-vertex">
 varying vec2 vUv;
 
 void main() {
@@ -15,8 +16,8 @@ void main() {
     gl_Position = projectionMatrix * mvPosition;
 }
 
-        </script>
-        <script id="fragmentShader" type="x-shader/x-fragment">
+</script>
+<script id="fragmentShader" type="x-shader/x-fragment">
 uniform vec2 iResolution;
 uniform float iGlobalTime;
 
@@ -54,10 +55,18 @@ void main(void) {
 
     gl_FragColor = vec4(k,k,k,1.0);
 }
-
-        </script>
-<style>.name { font-weight: bold; text-decoration: none; background: transparent; transition: .1s background ease-in; } .name:hover, .name:focus { background: #FFBF24 }
-    .overlay { background: black; position: absolute; width: 100%; height: 100%; opacity: 1; pointer-events: none; }
+</script>
+<style>
+picture { margin-bottom: 8px; }
+.name { font-size: 24px; font-weight: bold;
+ font-family: "Roboto-Black", "Arial-Black", Arial, Helvetica, sans-serif;
+ text-transform: uppercase;
+ text-decoration: none;
+ border-bottom: 4px solid #FFBF24;
+ color: #352769;
+ background: transparent; transition: .1s background ease-in; }
+.name:hover, .name:focus { background: #FFBF24 }
+.overlay { background: black; position: absolute; width: 100%; height: 100%; opacity: 1; pointer-events: none; }
 </style>
     </head>
     <body style="margin: 0; padding: 0; overflow: hidden; background: #020202;">
@@ -66,7 +75,7 @@ void main(void) {
                 <source srcset="./brand@1x.png 1x, ./brand@2x.png 2x">
                 <img src="./brand@2x.png" alt="Covalent Social brand image.">
             </picture>
-            <a style="border-bottom: 4px solid #FFBF24; color: #352769;" class="name" href="mailto:hello@covalent.social">covalent social</a>
+            <a class="name" href="mailto:hello@covalent.social">Covalent</a>
         </div>
         <div id="overlay-1" class="overlay" style="z-index: 2; transition: opacity 5s ease-out;"></div>
         <div id="overlay-2" class="overlay" style="z-index: 10; transition: opacity 1s ease-in;"></div>
